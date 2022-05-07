@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import './CreateNews.css'
+import {connect} from "react-redux";
+import {createNews} from "../../actions/newsActions";
 
 const CreateNews = ({createNews, newsLength}) => {
     const [name, setName] = useState('')
@@ -43,7 +45,7 @@ const CreateNews = ({createNews, newsLength}) => {
                         className='input__createNews'
                         type="text"
                         id="url"
-                        placeholder="Url address pic.."
+                        placeholder="https://example.."
                         onChange={(e)=> setUrl(e.target.value)}
                     />
 
@@ -77,4 +79,12 @@ const CreateNews = ({createNews, newsLength}) => {
     );
 };
 
-export default CreateNews;
+const mapStateToProps = ({news}) => ({
+    newsLength: news.news.length
+});
+
+const mapDispatchToProps = dispatch => ({
+    createNews: (newNews) => dispatch(createNews(newNews))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateNews);

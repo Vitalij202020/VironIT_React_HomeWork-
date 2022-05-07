@@ -2,8 +2,9 @@ import React from 'react';
 import './NewsItem.css'
 
 
-export default React.memo(function NewsItem (props) {
+function NewsItem (props) {
     const {id, url, name, publishedAt, author, title, moreInfo, description} = props.news
+
     return (
         <div className="card">
             <img src={url} alt=""/>
@@ -30,4 +31,10 @@ export default React.memo(function NewsItem (props) {
             </div>
         </div>
     )
-})
+}
+
+function areEqual(prevProps, nextProps) {
+    return JSON.stringify(prevProps.news) === JSON.stringify(nextProps.news)
+}
+
+export default React.memo(NewsItem, areEqual)

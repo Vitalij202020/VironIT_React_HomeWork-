@@ -1,26 +1,37 @@
 import React from 'react';
 import NewsItem from "../NewsItem/NewsItem";
 import './NewsItemsList.css'
+import {connect} from "react-redux";
+import {moreInfoHandler} from "../../actions/newsActions";
 
 
-function NewsItemList(props) {
+function NewsItemList({news, searchInput, moreInfoHandler}) {
     return (
         <div className="wrapper">
-            {props.news.filter((item) => {
-                if (props.searchInput === "" || props.searchInput === "Search News...") {
+            {news.filter((item) => {
+                if (searchInput === "") {
                     return item
-                } else if (item.title.toLowerCase().includes(props.searchInput.toLowerCase())) {
+                } else if (item.title.toLowerCase().includes(searchInput.toLowerCase())) {
                     return item
                 }
             }).map(item => (
                 <NewsItem
                     key={item.id}
                     news={item}
-                    moreInfoHandler={props.moreInfoHandler}
+                    moreInfoHandler={moreInfoHandler}
                 />
             ))}
         </div>
     )
 }
 
-export default NewsItemList;
+const mapStateToProps = ({news}) => ({
+    news: news.news,
+    searchInput: news.searchInput
+});
+
+const mapDispatchToProps = dispatch => ({
+    moreInfoHandler: (id) => dispatch(moreInfoHandler(id))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewsItemList);
