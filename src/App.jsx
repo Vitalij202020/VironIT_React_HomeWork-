@@ -1,24 +1,24 @@
-import React from 'react';
 import './App.css';
-import NewsItemsList from "./components/NewsItemsList/NewsItemsList";
-import Header from "./components/Header/Header";
-import CreateNews from "./components/CreateNews/CreateNews";
-import {connect} from "react-redux";
+import Header from "./components/Header";
+import {Route, Routes} from "react-router";
+import Home from "./pages/Home";
+import AdminPart from "./pages/AdminPart";
+import UserPart from "./pages/UserPart";
+import Profile from "./pages/Profile";
 
-function App({start, createNewsFlag}) {
+function App() {
     return (
         <div className="App">
             <Header/>
-            {createNewsFlag && <CreateNews/>}
-            {start && <NewsItemsList/>}
+            <Routes>
+                <Route exact path="home" element={<Home/>}/>
+                <Route exact path="admin" element={<AdminPart/>}/>
+                <Route exact path="user" element={<UserPart/>}/>
+                <Route exact path="profile" element={<Profile/>}/>
+                <Route  path="*" element={<Home/>}/>
+            </Routes>
         </div>
-    )
+    );
 }
 
-const mapStateToProps = ({news}) => ({
-    start: news.start,
-    createNewsFlag: news.createNewsFlag
-});
-
-
-export default connect(mapStateToProps)(App);
+export default App;
