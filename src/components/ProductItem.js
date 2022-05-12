@@ -8,7 +8,7 @@ import {useDispatch} from "react-redux";
 import {deleteProduct, findProduct, switchUpdateOn} from "../actions/productActions";
 
 
-const ProductItem = ({id, name, img, desc}) => {
+const ProductItem = ({id, category, image, description}) => {
     const {pathname} = useLocation()
     const dispatch = useDispatch()
 
@@ -23,16 +23,16 @@ const ProductItem = ({id, name, img, desc}) => {
             <Card sx={{width: 345}}>
                 <CardHeader
                     avatar={<QrCodeIcon/>}
-                    title={name}
+                    title={category}
                 />
                 <CardMedia
                     component="img"
-                    height="210"
-                    image={img}
+                    height="320"
+                    image={image}
                     alt="image"
                 />
-                <CardContent>
-                    <Typography variant="body2" color="text.secondary">{desc}</Typography>
+                <CardContent sx={{height: "54px", overflow: "hidden"}}>
+                    <Typography variant="body2" color="text.secondary">{description}</Typography>
                 </CardContent>
                 <CardActions disableSpacing sx={{display: pathname === '/admin' ? 'block' : 'none', float: "right"}}>
                     <IconButton aria-label="delete" onClick={() => dispatch(deleteProduct(id))}>

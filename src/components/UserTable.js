@@ -26,7 +26,7 @@ export default function UserTable() {
     ];
 
     return (
-        <Container sx={{ width: "700px"}}>
+        <Container sx={{ marginTop: "65px"}}>
         <TableContainer component={Paper} sx={{ marginTop: "15px" }}>
             <Table  aria-label="simple table">
                 <TableHead>

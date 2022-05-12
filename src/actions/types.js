@@ -8,6 +8,7 @@ export const SWITCH_UPDATE_OFF = 'SWITCH_UPDATE_OFF';
 
 export const CLEAR_FIELDS = 'CLEAR_FIELDS';
 export const SEARCH_INPUT_VALUE = 'SEARCH_INPUT_VALUE';
+export const ADD_MANY_PRODUCTS = 'ADD_MANY_PRODUCTS';
 
 export const EDIT_USER = 'EDIT_USER';
 

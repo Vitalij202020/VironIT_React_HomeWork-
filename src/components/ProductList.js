@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ProductItem from "./ProductItem";
 import {Grid} from "@mui/material";
 import {useSelector} from "react-redux";
@@ -13,7 +13,7 @@ const ProductList = () => {
             {products.filter((item) => {
                 if (searchInputValue === "") {
                     return item
-                } else if (item.desc.toLowerCase().includes(searchInputValue.toLowerCase())) {
+                } else if (item.description.toLowerCase().includes(searchInputValue.toLowerCase())) {
                     return item
                 }
             }).map(product => (

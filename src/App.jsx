@@ -1,12 +1,21 @@
 import './App.css';
 import Header from "./components/Header";
+import React, {useEffect} from 'react';
 import {Route, Routes} from "react-router";
 import Home from "./pages/Home";
 import AdminPart from "./pages/AdminPart";
 import UserPart from "./pages/UserPart";
 import Profile from "./pages/Profile";
+import {fetchProducts} from "./services/productService";
+import {useDispatch} from "react-redux";
 
 function App() {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchProducts())
+    }, [])
+
     return (
         <div className="App">
             <Header/>

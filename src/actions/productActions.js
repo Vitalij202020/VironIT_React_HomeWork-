@@ -6,7 +6,7 @@ import {
     SWITCH_UPDATE_ON,
     SWITCH_UPDATE_OFF,
     CLEAR_FIELDS,
-    SEARCH_INPUT_VALUE
+    SEARCH_INPUT_VALUE, ADD_MANY_PRODUCTS
 } from './types'
 
 
@@ -32,6 +32,10 @@ export const clearFields = () => {
 
 export const findProduct = (id) => {
     return {type: FIND_PRODUCT, payload: id}
+}
+
+export const addManyProducts = (products) => {
+    return {type: ADD_MANY_PRODUCTS, payload: products}
 }
 
 export const editProduct = (id, updatedProduct) => {

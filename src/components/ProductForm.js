@@ -11,27 +11,27 @@ const StyledTextField = styled(TextField)({
 })
 
 const ProductForm = () => {
-    const [name, setName] = useState('')
-    const [img, setImg] = useState('')
-    const [desc, setDesc] = useState('')
+    const [category, setCategory] = useState('')
+    const [image, setImage] = useState('')
+    const [description, setDescription] = useState('')
 
     const {isUpdating} = useSelector(state => state.products)
     const {product} = useSelector(state => state.products)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        setName(product.name)
-        setImg(product.img)
-        setDesc(product.desc)
+        setCategory(product.category)
+        setImage(product.image)
+        setDescription(product.description)
     }, [product])
 
     const createProduct = (e) => {
         e.preventDefault()
         const newProduct = {
             id: uuidv4(),
-            name: name || 'unknown',
-            img: img || 'https://e-stock.by/image/cache/photos/i06af1c7c0-650x650.jpg',
-            desc: desc || 'unknown',
+            category: category || 'unknown',
+            image: image || 'https://e-stock.by/image/cache/photos/i06af1c7c0-650x650.jpg',
+            description: description || 'unknown',
         }
         dispatch(addProduct(newProduct))
     }
@@ -39,9 +39,9 @@ const ProductForm = () => {
     const updateProduct = (e) => {
         e.preventDefault()
         const updatedProduct = {
-            name: name || 'unknown',
-            img: img || 'https://e-stock.by/image/cache/photos/i06af1c7c0-650x650.jpg',
-            desc: desc || 'unknown',
+            category: category || 'unknown',
+            image: image || 'https://e-stock.by/image/cache/photos/i06af1c7c0-650x650.jpg',
+            description: description || 'unknown',
         }
         dispatch(editProduct(product.id, updatedProduct))
         dispatch(switchUpdateOff())
@@ -58,32 +58,32 @@ const ProductForm = () => {
                 component="h2"
                 gutterBottom
             >
-                {isUpdating ? 'Update the Product' : 'Create a New Product'}
+                {isUpdating ? 'Edit the Product' : 'Create a New Product'}
             </Typography>
 
             <form noValidate autoComplete="off" onSubmit={(e) => isUpdating ? updateProduct(e) : createProduct(e)}>
                 <StyledTextField
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={(e) => setCategory(e.target.value)}
                     label="Product Name"
                     placeholder="brand"
                     variant="outlined"
-                    value={name}
+                    value={category}
                     fullWidth
                 />
                 <StyledTextField
-                    onChange={(e) => setImg(e.target.value)}
+                    onChange={(e) => setImage(e.target.value)}
                     label="Img Address"
                     variant="outlined"
                     placeholder="https://example"
-                    value={img}
+                    value={image}
                     fullWidth
                 />
                 <StyledTextField
-                    onChange={(e) => setDesc(e.target.value)}
+                    onChange={(e) => setDescription(e.target.value)}
                     label="Details"
                     variant="outlined"
                     placeholder="description"
-                    value={desc}
+                    value={description}
                     multiline
                     rows={4}
                     fullWidth
