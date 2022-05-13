@@ -2,11 +2,14 @@ import React from 'react';
 import {Container, InputAdornment, TextField} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import ProductList from "../components/ProductList";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {searchOnChange} from "../actions/productActions";
+import {Loader} from "../components/Loader";
 
 const UserPart = () => {
+    const {isLoading} = useSelector(state => state.user)
     const dispatch = useDispatch()
+
     return (
         <Container>
             <TextField
@@ -23,7 +26,7 @@ const UserPart = () => {
                     ),
                 }}
             />
-            <ProductList/>
+            {isLoading ? <Loader/> : <ProductList/>}
         </Container>
     );
 };

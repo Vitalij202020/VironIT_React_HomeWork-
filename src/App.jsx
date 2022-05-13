@@ -8,6 +8,7 @@ import UserPart from "./pages/UserPart";
 import Profile from "./pages/Profile";
 import {fetchProducts} from "./services/productService";
 import {useDispatch} from "react-redux";
+import PrivateRoute from "./hok/PrivateRoute";
 
 function App() {
     const dispatch = useDispatch()
@@ -20,10 +21,10 @@ function App() {
         <div className="App">
             <Header/>
             <Routes>
-                <Route exact path="home" element={<Home/>}/>
-                <Route exact path="admin" element={<AdminPart/>}/>
-                <Route exact path="user" element={<UserPart/>}/>
-                <Route exact path="profile" element={<Profile/>}/>
+                <Route path="home" element={<Home/>}/>
+                <Route path="admin" element={<PrivateRoute component={AdminPart}/>}/>
+                <Route path="user" element={<PrivateRoute component={UserPart}/>}/>
+                <Route path="profile" element={<PrivateRoute component={Profile}/>}/>
                 <Route  path="*" element={<Home/>}/>
             </Routes>
         </div>

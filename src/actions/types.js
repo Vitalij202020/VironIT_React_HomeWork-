@@ -11,4 +11,10 @@ export const SEARCH_INPUT_VALUE = 'SEARCH_INPUT_VALUE';
 export const ADD_MANY_PRODUCTS = 'ADD_MANY_PRODUCTS';
 
 export const EDIT_USER = 'EDIT_USER';
+export const SHOW_LOADER = 'SHOW_LOADER';
+export const HIDE_LOADER = 'HIDE_LOADER';
+
+export const SWITCH_ACCESS = 'SWITCH_ACCESS';
+
+
 
