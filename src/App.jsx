@@ -8,7 +8,7 @@ import UserPart from "./pages/UserPart";
 import Profile from "./pages/Profile";
 import {fetchProducts} from "./services/productService";
 import {useDispatch} from "react-redux";
-import PrivateRoute from "./hok/PrivateRoute";
+import PrivateRoute from "./hoc/PrivateRoute";
 
 function App() {
     const dispatch = useDispatch()

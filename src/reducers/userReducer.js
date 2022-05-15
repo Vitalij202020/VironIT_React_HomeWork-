@@ -4,7 +4,7 @@ import {EDIT_USER, HIDE_LOADER, SHOW_LOADER, SWITCH_ACCESS} from "../actions/typ
 const initialState = {
     user: User,
     isLoading: false,
-    isLogin: false
+    isLogin: true
 };
 
 export default function (state = initialState, action) {
